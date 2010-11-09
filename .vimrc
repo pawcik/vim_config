@@ -9,7 +9,9 @@
   call pathogen#runtime_append_all_bundles()
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
-" BASIC {{{
+  let mapleader=","
+
+" Editing Behaviour {{{
   syntax on
   set number
   set showmatch "highlight matching braces
@@ -19,10 +21,63 @@
   set expandtab
   set encoding=utf-8
 
-  color xoria256 
   set smartcase "Use case insensitive search, except when using capital letters
   set incsearch "Find when typing
   set hlsearch
+
+  color xoria256 
+"}}}
+
+" Editor Layout {{{
+  set wildmenu                    " make tab completion for files/buffers act like bash
+  set wildmode=list:full          " show a list when pressing tab and complete
+                                  "    first full match
+  set wildignore=*.swp,*.bak,*.pyc,*.class
+  " }}}
+
+" Shortcut mappings {{{
+  " Since I never use the ; key anyway, this is a real optimization for almost
+  " all Vim commands, since we don't have to press that annoying Shift key that
+  " slows the commands down
+  nnoremap ; :
+
+  " Avoid accidental hits of <F1> while aiming for <Esc>
+  map! <F1> <Esc>
+
+  " Quickly close the current window
+  nnoremap <leader>q :q<CR>
+  map <silent> <t_133>9 :Commant<CR> 
+
+  " Remap j and k to act as expected when used on long, wrapped, lines
+  nnoremap j gj
+  nnoremap k gk
+
+  " to set lines 47 to remove bottom border for my dell
+  map sl :set lines=47 
+  nmap <leader>rr :call ReloadSnippets( snippest_dir, &filetype)<CR>
+
+  " Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
+  " yanked stack (also, in visual mode)
+  nmap <silent> <leader>d "_d
+  vmap <silent> <leader>d "_d
+
+  " Yank/paste to the OS clipboard with ,y and ,p
+  nmap <leader>y "+y
+  nmap <leader>Y "+yy
+  nmap <leader>p "+p
+  nmap <leader>P "+P
+
+
+  " Edit the vimrc file
+  nmap <silent> <leader>ev :e $MYVIMRC<CR>
+  nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+  " ---------    SPELL     -------------
+  map zp :setlocal spell spelllang=pl<CR>
+  map zP :setlocal nospell<CR>
+  map ze :setlocal spell spelllang=en_us<CR>
+  map zE :setlocal nospell<CR>
+
 "}}}
 
 "AutoCommand  {
@@ -84,19 +139,10 @@ endif
 
   let snippest_dir="~/.vim/snippets"
 " KEYS {
-  " to set lines 47 to remove bottom border for my dell
-  map sl :set lines=47 
-  nmap ,rr :call ReloadSnippets( snippest_dir, &filetype)<CR>
-" }
-" SPELL {
-  map zp :setlocal spell spelllang=pl<CR>
-  map zP :setlocal nospell<CR>
-  map ze :setlocal spell spelllang=en_us<CR>
-  map zE :setlocal nospell<CR>
 " }
 "
 "
-" FUNCTIONS () {
+" FUNCTIONS () {{{
 function! ReloadSnippets( snippets_dir, ft )
     if strlen( a:ft ) == 0
         let filetype = "_"
@@ -109,4 +155,4 @@ function! ReloadSnippets( snippets_dir, ft )
 endfunction
 
 
-" }
+" }}}
