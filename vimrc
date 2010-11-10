@@ -31,15 +31,15 @@
 
 " Editor Layout {{{
   set wildmenu                    " make tab completion for files/buffers act like bash
-  set wildmode=list:full          " show a list when pressing tab and complete
-                                  "    first full match
   set wildignore=*.swp,*.bak,*.pyc,*.class
-  " }}}
+" }}}
+
+" Vim behaviour {{{ 
+  set completeopt=menu,longest,preview  
+
+" }}}
 
 " Shortcut mappings {{{
-  " Since I never use the ; key anyway, this is a real optimization for almost
-  " all Vim commands, since we don't have to press that annoying Shift key that
-  " slows the commands down
   nnoremap ; :
 
   " Avoid accidental hits of <F1> while aiming for <Esc>
@@ -68,15 +68,22 @@
   nmap <leader>p "+p
   nmap <leader>P "+P
 
-  " Require Plugin: unimpaired
+  " Plugin: unimpaired
+  if exists("g:loaded_unimpaired") || &cp || v:version < 700
   " Bubble single lines
-  nmap <C-Up> [e
-  nmap <C-Down> ]e
-  " Bubble multiple lines
-  vmap <C-Up> [egv
-  vmap <C-Down> ]egv
-
-
+    nmap <C-Up> [e
+    nmap <C-Down> ]e
+    " Bubble multiple lines
+    vmap <C-Up> [egv
+    vmap <C-Down> ]egv
+  else
+    " Bubble single lines
+    nmap <C-Up> ddkP
+    nmap <C-Down> ddp
+    " " Bubble multiple lines
+    vmap <C-Up> xkP`[V`]
+    vmap <C-Down> xp`[V`]
+  endif
 
   " Edit the vimrc file
   nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -88,6 +95,11 @@
   map zP :setlocal nospell<CR>
   map ze :setlocal spell spelllang=en_us<CR>
   map zE :setlocal nospell<CR>
+
+  " Plugin: supertab
+  if exists("g:SuperTabLongestEnhanced")
+    let g:SuperTabLongestEnhanced = 1
+  endif
 
 "}}}
 
