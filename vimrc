@@ -68,10 +68,20 @@
   nmap <leader>p "+p
   nmap <leader>P "+P
 
+  " Require Plugin: unimpaired
+  " Bubble single lines
+  nmap <C-Up> [e
+  nmap <C-Down> ]e
+  " Bubble multiple lines
+  vmap <C-Up> [egv
+  vmap <C-Down> ]egv
+
+
 
   " Edit the vimrc file
   nmap <silent> <leader>ev :e $MYVIMRC<CR>
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
 
   " ---------    SPELL     -------------
   map zp :setlocal spell spelllang=pl<CR>
