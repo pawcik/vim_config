@@ -24,6 +24,7 @@
   set smartcase "Use case insensitive search, except when using capital letters
   set incsearch "Find when typing
   set hlsearch
+  set noswapfile
 
   color xoria256 
 "}}}
