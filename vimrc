@@ -49,6 +49,9 @@
   " Avoid accidental hits of <F1> while aiming for <Esc>
   map! <F1> <Esc>
 
+  " To return to normal mode by pressing twice j
+  imap jj <Esc>
+
   " Quickly close the current window
   nnoremap <leader>q :q<CR>
   map <silent> <t_133>9 :Commant<CR>
