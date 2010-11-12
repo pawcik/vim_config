@@ -1,12 +1,9 @@
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = git://git.wincent.com/command-t.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = http://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
+	url = http://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = http://github.com/ervandew/supertab.git
@@ -18,4 +15,7 @@
 	url = http://github.com/nelstrom/vim-mac-classic-theme.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = http://github.com/scrooloose/nerdtree.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = http://github.com/wincent/Command-T.git
