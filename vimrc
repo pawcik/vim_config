@@ -22,6 +22,7 @@
   set shiftwidth=2
 
   set smartcase "Use case insensitive search, except when using capital letters
+  set ignorecase
   set showmatch "highlight matching braces
   set incsearch "Find when typing
   set hlsearch
@@ -106,6 +107,8 @@
     vmap <C-Down> xp`[V`]
   endif
 
+  " Plugin: NERDTree
+  nnoremap <silent> <F9> :NERDTreeToggle<CR>
   " Edit the vimrc file
   nmap <silent> <leader>ev :tabnew $MYVIMRC<CR>
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -125,6 +128,15 @@
   if exists("g:SuperTabLongestEnhanced")
     let g:SuperTabLongestEnhanced = 1
     let g:SuperTabLeadingSpaceCompletion = 0
+  endif
+
+  " Plugin: taglist
+  if exists("loaded_taglist") && loaded_taglist == 'available'
+    let Tlist_Use_Right_Window = 1
+    let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
+    set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
+
+    nnoremap <silent> <F8> :TlistToggle<CR>
   endif
 " }}}
 
