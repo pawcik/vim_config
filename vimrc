@@ -131,11 +131,10 @@
   endif
 
   " Plugin: taglist
-  if exists("loaded_taglist") && loaded_taglist == 'available'
+  if exists("loaded_taglist")
     let Tlist_Use_Right_Window = 1
     let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
     set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
-
     nnoremap <silent> <F8> :TlistToggle<CR>
   endif
 " }}}
@@ -179,7 +178,8 @@ endif
 "}
 " StatusLine {
   set laststatus=2                          "to be sure status linse is visible
-  set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
+  set statusline=%f\ %m\ %r\ %=\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
+  " set statusline=%-9F%m%r%h%w\ [F=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
   "  set statusline=
   "  set statusline+=%<\                       " cut at start
   "  set statusline+=%2*[%n%H%M%R%W]%*\        " buffer number, and flags
