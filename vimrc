@@ -6,8 +6,8 @@
 " Use pathogen to easily modify the runtime path to include all plugins under
 " the ~/.vim/bundle directory
   filetype off                    " force reloading *after* pathogen loaded
-  call pathogen#helptags()
   call pathogen#runtime_append_all_bundles()
+  call pathogen#helptags()
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
   let mapleader=","
@@ -168,7 +168,7 @@ endif
 "}
 " StatusLine {
   set laststatus=2                          "to be sure status linse is visible
-  set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
+  set statusline=%f%m%r%h%w\ [%{&ff}]\ [TYPE=%Y]\ [%{&fileencoding}]\ [A=\%03.3b]\ [H=\%02.2B]\%=[%04l/%04v][%p%%]\ [LEN=%L]
   "  set statusline=
   "  set statusline+=%<\                       " cut at start
   "  set statusline+=%2*[%n%H%M%R%W]%*\        " buffer number, and flags
@@ -188,14 +188,19 @@ endif
   " }
   "
   " GUI { default agimrLtT
-  set guioptions-=m " turn off menu bar
-  set guioptions-=T " turn off toolbar
-  set guioptions-=e " remove gui tab page
-  set guioptions+=c " use console dialogs for simple choices
-  set guioptions-=b " remove bottom scrollbar
-  set guioptions-=r
-  set guioptions-=t
-  set guioptions-=L
+  " In GVIM
+  if has("gui_running")
+    set guioptions-=m " turn off menu bar
+    set guioptions-=T " turn off toolbar
+    set guioptions-=e " remove gui tab page
+    set guioptions+=c " use console dialogs for simple choices
+    set guioptions-=b " remove bottom scrollbar
+    set guioptions-=r
+    set guioptions-=t
+    set guioptions-=L
+
+    set guifont=Liberation_Mono:h10
+  endif
   " }
 
   let snippest_dir="~/.vim/snippets"
