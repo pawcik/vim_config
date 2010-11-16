@@ -23,6 +23,7 @@
   set shiftwidth=2
 
   set smartcase "Use case insensitive search, except when using capital letters
+  set ignorecase
   set showmatch "highlight matching braces
   set incsearch "Find when typing
   set hlsearch
@@ -107,6 +108,8 @@
     vmap <C-Down> xp`[V`]
   endif
 
+  " Plugin: NERDTree
+  nnoremap <silent> <F9> :NERDTreeToggle<CR>
   " Edit the vimrc file
   nmap <silent> <leader>ev :tabnew $MYVIMRC<CR>
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -126,6 +129,14 @@
   if exists("g:SuperTabLongestEnhanced")
     let g:SuperTabLongestEnhanced = 1
     let g:SuperTabLeadingSpaceCompletion = 0
+  endif
+
+  " Plugin: taglist
+  if exists("loaded_taglist")
+    let Tlist_Use_Right_Window = 1
+    let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
+    set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
+    nnoremap <silent> <F8> :TlistToggle<CR>
   endif
 " }}}
 
@@ -168,7 +179,8 @@ endif
 "}
 " StatusLine {
   set laststatus=2                          "to be sure status linse is visible
-  set statusline=%f%m%r%h%w\ [%{&ff}]\ [TYPE=%Y]\ [%{&fileencoding}]\ [A=\%03.3b]\ [H=\%02.2B]\%=[%04l/%04v][%p%%]\ [LEN=%L]
+  set statusline=%f\ %m\ %r\ %=\ %{$fileencoding}\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
+  " set statusline=%-9F%m%r%h%w\ [F=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
   "  set statusline=
   "  set statusline+=%<\                       " cut at start
   "  set statusline+=%2*[%n%H%M%R%W]%*\        " buffer number, and flags
@@ -199,7 +211,16 @@ endif
     set guioptions-=t
     set guioptions-=L
 
-    set guifont=Liberation_Mono:h10
+    if has("gui_running")
+        if has("gui_gtk2")
+          set guifont=Liberation_Mono_10
+        elseif has("x11")
+        " Also for GTK 1
+          "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
+        elseif has("gui_win32")
+          set guifont=Liberation_Mono:h10:cANSI
+        endif
+    endif
   endif
   " }
 
