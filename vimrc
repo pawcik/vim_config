@@ -1,4 +1,4 @@
-"
+" 
 " Use vim settings, rather then vi settings (much better!)
 " This must be first, because it changes other options as a side effect.
   set nocompatible
@@ -64,7 +64,7 @@
 
   " to set lines 47 to remove bottom border for my dell
   map sl :set lines=47
-  nmap <leader>rr :call ReloadSnippets( snippest_dir, &filetype)<CR>
+  nmap <leader>rr :call MyReloadSnippets(snippets_dir, &filetype)<CR>
 
   " Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
   " yanked stack (also, in visual mode)
@@ -108,12 +108,20 @@
     vmap <C-Down> xp`[V`]
   endif
 
+  " Plugin: CTags
+  nnoremap <silent> <F8> :TlistToggle<CR>
   " Plugin: NERDTree
   nnoremap <silent> <F9> :NERDTreeToggle<CR>
   " Edit the vimrc file
   nmap <silent> <leader>ev :tabnew $MYVIMRC<CR>
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+  " bundle/snipmate/after/plugin/snipmate
+  ino <silent> <leader>, <c-r>=TriggerSnippet()<cr>
+  snor <silent> <leader>, <esc>i<right><c-r>=TriggerSnippet()<cr>
+  ino <silent> <leader>\< <c-r>=BackwardsSnippet()<cr>
+  snor <silent> <leader>\< <esc>i<right><c-r>=BackwardsSnippet()<cr>
+  ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
 
 
   " ---------    SPELL     -------------
@@ -132,12 +140,9 @@
   endif
 
   " Plugin: taglist
-  if exists("loaded_taglist")
-    let Tlist_Use_Right_Window = 1
-    let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
-    set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
-    nnoremap <silent> <F8> :TlistToggle<CR>
-  endif
+  let Tlist_Use_Right_Window = 1
+  let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
+  set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
 " }}}
 
 "AutoCommand  {
@@ -213,7 +218,7 @@ endif
 
     if has("gui_running")
         if has("gui_gtk2")
-          set guifont=Liberation_Mono_10
+          "set guifont=Liberation_Mono_10
         elseif has("x11")
         " Also for GTK 1
           "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
@@ -224,21 +229,17 @@ endif
   endif
   " }
 
-  let snippest_dir="~/.vim/snippets"
-  " KEYS {
-  " }
-  "
-  "
+  let snippets_dir="~/.vim/snippets"
   " FUNCTIONS () {{{
-  function! ReloadSnippets( snippets_dir, ft )
+  function! MyReloadSnippets( snippets_dir, ft )
     if strlen( a:ft ) == 0
       let filetype = "_"
     else
       let filetype = a:ft
     endif
 
-    call ResetSnippets()
-    call GetSnippets( a:snippets_dir, filetype )
+    call ResetSnippets(filetype)
+    call GetSnippets( g:snippets_dir, filetype )
   endfunction
   " }}}
 
