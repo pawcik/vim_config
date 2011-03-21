@@ -22,3 +22,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = http://github.com/msanders/snipmate.vim.git
+[submodule "bundle/vim-scala"]
+	path = bundle/vim-scala
+	url = http://github.com/ewiplayer/vim-scala.git
