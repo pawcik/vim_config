@@ -148,6 +148,12 @@
     let g:SuperTabLeadingSpaceCompletion = 0
     let g:SuperTabRetainCompletionDuration='session'
   "endif
+  
+  " Plugin: gtranslate {{{
+  let g:langpair="en|pl"
+  let g:vtranslate="T"
+  " }}}
+  
 
   " Plugin: taglist
   let Tlist_Use_Right_Window = 1
