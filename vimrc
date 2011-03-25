@@ -11,6 +11,8 @@
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
   let mapleader=","
+  "VIM home to 
+  let $VIMHOME=expand('<sfile>:p:h')
 
 " Editing Behaviour {{{
   syntax on
@@ -28,6 +30,9 @@
   set incsearch "Find when typing
   set hlsearch
   set noswapfile
+
+  "to open files only in unix format, for windows display ^M for endlines
+  set fileformats=unix,dos
 
   set encoding=utf-8
 
@@ -61,6 +66,7 @@
   " Remap j and k to act as expected when used on long, wrapped, lines
   nnoremap j gj
   nnoremap k gk
+  nnoremap R "_d
 
   " to set lines 47 to remove bottom border for my dell
   map sl :set lines=47
@@ -116,12 +122,6 @@
   nmap <silent> <leader>ev :tabnew $MYVIMRC<CR>
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-  " bundle/snipmate/after/plugin/snipmate
-  ino <silent> <leader>, <c-r>=TriggerSnippet()<cr>
-  snor <silent> <leader>, <esc>i<right><c-r>=TriggerSnippet()<cr>
-  ino <silent> <leader>\< <c-r>=BackwardsSnippet()<cr>
-  snor <silent> <leader>\< <esc>i<right><c-r>=BackwardsSnippet()<cr>
-  ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
 
 
   " ---------    SPELL     -------------
@@ -143,6 +143,29 @@
   let Tlist_Use_Right_Window = 1
   let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
   set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
+
+  " Plugin: snipmate
+  " bundle/snipmate/after/plugin/snipmate
+  ino <silent> <leader>s <c-r>=TriggerSnippet()<cr>
+  ino <silent> <leader>, <c-r>=TriggerSnippet()<cr>
+  snor <silent> <leader>, <esc>i<right><c-r>=TriggerSnippet()<cr>
+  ino <silent> <leader>\< <c-r>=BackwardsSnippet()<cr>
+  snor <silent> <leader>\< <esc>i<right><c-r>=BackwardsSnippet()<cr>
+  ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
+  let snippets_dir=$VIMHOME . "/snippets"
+
+  " FUNCTIONS () {{{
+  function! MyReloadSnippets( snippets_dir, ft )
+    if strlen( a:ft ) == 0
+      let filetype = "_"
+    else
+      let filetype = a:ft
+    endif
+
+    call ResetSnippets(filetype)
+    call GetSnippets( g:snippets_dir, filetype )
+  endfunction
+  
 " }}}
 
 "AutoCommand  {
@@ -184,7 +207,7 @@ endif
 "}
 " StatusLine {
   set laststatus=2                          "to be sure status linse is visible
-  set statusline=%f\ %m\ %r\ %=\ %{$fileencoding}\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
+  set statusline=%f\ %m\ %r\ %=\ %{$fileencoding}\ [%{&fileencoding}]\ [%{&ff}]\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
   " set statusline=%-9F%m%r%h%w\ [F=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
   "  set statusline=
   "  set statusline+=%<\                       " cut at start
@@ -216,31 +239,17 @@ endif
     set guioptions-=t
     set guioptions-=L
 
-    if has("gui_running")
-        if has("gui_gtk2")
-          "set guifont=Liberation_Mono_10
-        elseif has("x11")
-        " Also for GTK 1
-          "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
-        elseif has("gui_win32")
-          set guifont=Liberation_Mono:h10:cANSI
-        endif
+    if has("gui_gtk2")
+      "set guifont=Liberation_Mono_10
+    elseif has("x11")
+      " Also for GTK 1
+      "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
+    elseif has("gui_win32")
+      set guifont=Liberation_Mono:h10:cANSI
     endif
   endif
   " }
 
-  let snippets_dir="~/.vim/snippets"
-  " FUNCTIONS () {{{
-  function! MyReloadSnippets( snippets_dir, ft )
-    if strlen( a:ft ) == 0
-      let filetype = "_"
-    else
-      let filetype = a:ft
-    endif
-
-    call ResetSnippets(filetype)
-    call GetSnippets( g:snippets_dir, filetype )
-  endfunction
   " }}}
 
   " TIPS {{{
