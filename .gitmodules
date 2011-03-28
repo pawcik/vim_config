@@ -22,3 +22,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = http://github.com/msanders/snipmate.vim.git
+[submodule "bundle/plantuml-syntax"]
+	path = bundle/plantuml-syntax
+	url = http://github.com/ukstv/plantuml-syntax.vim.git
