@@ -130,14 +130,30 @@
   map ze :setlocal spell spelllang=en_us<CR>
   map zE :setlocal nospell<CR>
 "}}}
+"
+"------------------------------------------
+" Omnicompletion
+"------------------------------------------
+"JAVA
+  if has("autocmd")
+	  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+	endif
+
 
 
 " Plugins settings {{{
   " Plugin: supertab
-  if exists("g:SuperTabLongestEnhanced")
+  "if exists("g:SuperTabLongestEnhanced")
     let g:SuperTabLongestEnhanced = 1
     let g:SuperTabLeadingSpaceCompletion = 0
-  endif
+    let g:SuperTabRetainCompletionDuration='session'
+  "endif
+  
+  " Plugin: gtranslate {{{
+  let g:langpair="en|pl"
+  let g:vtranslate="T"
+  " }}}
+  
 
   " Plugin: taglist
   let Tlist_Use_Right_Window = 1
