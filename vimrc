@@ -123,6 +123,7 @@
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 
+  nmap <leader>cd :let $CURRENT_PATH=expand("%:p:h")<CR>:cd $CURRENT_PATH<CR>
 
   " ---------    SPELL     -------------
   map zp :setlocal spell spelllang=pl<CR>
