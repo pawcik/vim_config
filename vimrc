@@ -123,6 +123,7 @@
   nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 
+  " Enter to edited file's directory
   nmap <leader>cd :let $CURRENT_PATH=expand("%:p:h")<CR>:cd $CURRENT_PATH<CR>
 
   " ---------    SPELL     -------------
