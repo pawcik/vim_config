@@ -39,6 +39,8 @@
   "color xoria256
   set background=dark
   color solarized
+  "highlight current line
+  set cursorline
 
   "tab: u25b8 ▸, eol: u00ac ¬, nbsp: u00B7 ·
   set listchars=tab:▸\ ,eol:¬,nbsp:·,trail:·
