@@ -36,7 +36,7 @@
 
   set encoding=utf-8
 
-  color xoria256
+  "color xoria256
   "tab: u25b8 ▸, eol: u00ac ¬, nbsp: u00B7 ·
   set listchars=tab:▸\ ,eol:¬,nbsp:·,trail:·
 "}}}
@@ -131,6 +131,11 @@
   map zP :setlocal nospell<CR>
   map ze :setlocal spell spelllang=en_us<CR>
   map zE :setlocal nospell<CR>
+
+
+  " using to insert cs from cr
+  nmap <leader>c :r !powertool -g <C-R><C-W><CR>
+  nmap <leader>cx :r !powertool -x -g x<CR>
 "}}}
 "
 "------------------------------------------
@@ -203,6 +208,13 @@ if has("autocmd")
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 
+    autocmd FileType cccs setlocal cms=#%s 
+    autocmd FileType cccs set foldmethod=marker
+
+    "python
+    autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType python set foldmethod=indent
+
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 
@@ -217,15 +229,21 @@ if has("autocmd")
     " Automatically chmod +x Shell and Perl scripts
     "au BufWritePost   *.sh             !chmod +x %
     "au BufWritePost   *.pl             !chmod +x %
+    
+    " Save/restore buffer state
+    au BufWinLeave * silent! mkview
+    au BufWinEnter * silent! loadview
 
     " File formats
     "au BufNewFile,BufRead  *.pls    set syntax=dosini
     "au BufNewFile,BufRead  modprobe.conf    set syntax=modconf
+    
+
 endif
 "}
 " StatusLine {
   set laststatus=2                          "to be sure status linse is visible
-  set statusline=%f\ %m\ %r\ %=\ %{$fileencoding}\ [%{&fileencoding}]\ [%{&ff}]\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
+  set statusline=%f\ %m\ %r\ %=\ [%{&fileencoding}]\ [%{&ff}]\ [ft=%{&ft}]\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
   " set statusline=%-9F%m%r%h%w\ [F=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
   "  set statusline=
   "  set statusline+=%<\                       " cut at start
@@ -258,13 +276,14 @@ endif
     set guioptions-=L
 
     if has("gui_gtk2")
-      "set guifont=Liberation_Mono_10
+      set guifont=Monospace\ 13
     elseif has("x11")
       " Also for GTK 1
       "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
     elseif has("gui_win32")
       set guifont=Liberation_Mono:h10:cANSI
     endif
+
   endif
   " }
 
