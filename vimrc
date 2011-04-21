@@ -37,6 +37,9 @@
   set encoding=utf-8
 
   "color xoria256
+  set background=dark
+  color solarized
+
   "tab: u25b8 ▸, eol: u00ac ¬, nbsp: u00B7 ·
   set listchars=tab:▸\ ,eol:¬,nbsp:·,trail:·
 "}}}
