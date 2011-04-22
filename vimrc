@@ -141,6 +141,9 @@
   " using to insert cs from cr
   nmap <leader>c :r !powertool -g <C-R><C-W><CR>
   nmap <leader>cx :r !powertool -x -g x<CR>
+
+  " toggleRainbow
+  nmap <leader>R :RainbowParenthsisToggle<CR>
 "}}}
 "
 "------------------------------------------
@@ -286,7 +289,8 @@ endif
       " Also for GTK 1
       "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
     elseif has("gui_win32")
-      set guifont=Liberation_Mono:h10:cANSI
+      set guifont=DejaVu_LGC_Sans_Mono:h10:cANSI
+
     endif
 
   endif
