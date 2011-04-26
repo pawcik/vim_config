@@ -31,6 +31,6 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = http://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/reload"]
-	path = bundle/reload
-	url = http://github.com/xolox/vim-reload.git
+[submodule "bundle/vim-reload"]
+	path = bundle/vim-reload
+	url = http://github.com/vim-scripts/reload.vim.git
