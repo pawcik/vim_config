@@ -36,9 +36,9 @@
 
   set encoding=utf-8
 
-  "color xoria256
-  set background=dark
-  color solarized
+  color xoria256
+  "set background=dark
+  "color solarized
   "highlight current line
   set cursorline
 
