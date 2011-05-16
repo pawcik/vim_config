@@ -12,7 +12,12 @@
 
   let mapleader=","
   "VIM home to 
-  let $VIMHOME=expand('<sfile>:p:h')
+  if has('win32') || has ('win64')
+      let $VIMHOME = $HOME."\\vimfiles"
+  else
+      let $VIMHOME = $HOME."/.vim"
+  endif
+  "let $VIMHOME=expand('<sfile>:p:h')
 
 " Editing Behaviour {{{
   syntax on
@@ -175,6 +180,7 @@
   let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
   set title titlestring= "GVIM" . %<%f\%([%{Tlist_Get_Tagname_By_Line()}]%)
 
+
   " Plugin: snipmate
   " bundle/snipmate/after/plugin/snipmate
   ino <silent> <leader>s <c-r>=TriggerSnippet()<cr>
@@ -183,7 +189,12 @@
   ino <silent> <leader>\< <c-r>=BackwardsSnippet()<cr>
   snor <silent> <leader>\< <esc>i<right><c-r>=BackwardsSnippet()<cr>
   ino <silent> <leader>n <c-r>=ShowAvailableSnips()<cr>
-  let snippets_dir=$VIMHOME . "/snippets"
+
+  if has('win32') || has ('win64')
+      let snippets_dir=$VIMHOME . "\\snippets"
+  else
+      let snippets_dir=$VIMHOME . "/snippets"
+  endif
 
   " FUNCTIONS () {{{
   function! MyReloadSnippets( snippets_dir, ft )
