@@ -136,6 +136,9 @@
   " Enter to edited file's directory
   nmap <leader>cd :let $CURRENT_PATH=expand("%:p:h")<CR>:cd $CURRENT_PATH<CR>
 
+  "open a file under cursor (split window) event if not exist
+  map <leader>gf :sp <cfile><cr>
+
   " ---------    SPELL     -------------
   map zp :setlocal spell spelllang=pl<CR>
   map zP :setlocal nospell<CR>
@@ -225,7 +228,9 @@ if has("autocmd")
     " Customisations based on house-style (arbitrary)
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType md setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+    autocmd FileType snippet setlocal ts=2 sts=2 sw=2 noexpandtab
 
     autocmd FileType cccs setlocal cms=#%s 
     autocmd FileType cccs set foldmethod=marker
