@@ -3,11 +3,22 @@
 " This must be first, because it changes other options as a side effect.
   set nocompatible
 
-" Use pathogen to easily modify the runtime path to include all plugins under
-" the ~/.vim/bundle directory
   filetype off                    " force reloading *after* pathogen loaded
-  call pathogen#runtime_append_all_bundles()
-  call pathogen#helptags()
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  Bundle 'gmarik/vundle'
+  Bundle 'scrooloose/nerdcommenter'
+  Bundle 'ervandew/supertab'
+  Bundle 'nelstrom/vim-mac-classic-theme'
+  Bundle 'tpope/vim-unimpaired'
+  Bundle 'msanders/snipmate.vim'
+  Bundle 'kien/ctrlp.vim'
+        
+  Bundle 'FuzzyFinder'
+  " required by FuzzyFinder
+  Bundle 'L9' 
+
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
   let mapleader=","
@@ -107,6 +118,13 @@
   map <C-l> <C-w>l
 
 
+  " Plugin: ctrlp {{{
+   let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+	\ 'file': '\.exe$\|\.so$\|\.dll$',
+	\ } 
+  " }}}
+  "
 " Plugin: unimpaired
   if exists("g:loaded_unimpaired") || &cp || v:version < 700
   " Bubble single lines
@@ -176,6 +194,7 @@
   let g:langpair="en|pl"
   let g:vtranslate="T"
   " }}}
+  "
   
 
   " Plugin: taglist
@@ -300,7 +319,7 @@ endif
     set guioptions-=L
 
     if has("gui_gtk2")
-      set guifont=Monospace\ 13
+      set guifont=Monospace\ 11
     elseif has("x11")
       " Also for GTK 1
       "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*

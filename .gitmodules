@@ -25,9 +25,6 @@
 [submodule "bundle/plantuml-syntax"]
 	path = bundle/plantuml-syntax
 	url = http://github.com/ukstv/plantuml-syntax.vim.git
-[submodule "bundle/vim-scala"]
-	path = bundle/vim-scala
-	url = http://github.com/ewiplayer/vim-scala.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = http://github.com/altercation/vim-colors-solarized.git
