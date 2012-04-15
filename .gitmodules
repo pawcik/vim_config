@@ -34,3 +34,6 @@
 [submodule "bundle/vim-reload"]
 	path = bundle/vim-reload
 	url = http://github.com/vim-scripts/reload.vim.git
+[submodule "bundle/vundle"]
+	path = bundle/vundle
+	url = https://github.com/gmarik/vundle.git
