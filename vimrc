@@ -14,11 +14,10 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'msanders/snipmate.vim'
   Bundle 'kien/ctrlp.vim'
+  Bundle 'altercation/vim-colors-solarized'
+  Bundle 'derekwyatt/vim-scala'
+  Bundle 'chrisbra/csv.vim'
         
-  Bundle 'FuzzyFinder'
-  " required by FuzzyFinder
-  Bundle 'L9' 
-
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
   let mapleader=","
@@ -190,13 +189,6 @@
     let g:SuperTabRetainCompletionDuration='session'
   "endif
   
-  " Plugin: gtranslate {{{
-  let g:langpair="en|pl"
-  let g:vtranslate="T"
-  " }}}
-  "
-  
-
   " Plugin: taglist
   let Tlist_Use_Right_Window = 1
   let tlist_tex_settings='tex;c:chapters;s:sections;u:subsections;b:subsubsections;p:parts;P:paragraphs;G:subparagraphs'
@@ -248,7 +240,7 @@ if has("autocmd")
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType md setlocal ts=4 sts=4 sw=4 expandtab
-    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType snippet setlocal ts=2 sts=2 sw=2 noexpandtab
 
     autocmd FileType cccs setlocal cms=#%s 
@@ -319,7 +311,7 @@ endif
     set guioptions-=L
 
     if has("gui_gtk2")
-      set guifont=Monospace\ 11
+      set guifont=Monospace\ 10
     elseif has("x11")
       " Also for GTK 1
       "set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
