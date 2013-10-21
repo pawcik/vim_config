@@ -17,6 +17,10 @@
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'derekwyatt/vim-scala'
   Bundle 'chrisbra/csv.vim'
+  Bundle 'vimwiki'
+  Bundle 'airblade/vim-gitgutter'
+  Bundle 'tpope/vim-fugitive'
+  Bundle 'plasticboy/vim-markdown'
         
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
@@ -97,6 +101,8 @@
   nmap <silent> <leader>d "_d
   vmap <silent> <leader>d "_d
 
+  vmap <leader>x "_x
+
   " Yank/paste to the OS clipboard with ,y and ,p
   nmap <leader>y "+y
   nmap <leader>Y "+yy
@@ -119,7 +125,7 @@
 
   " Plugin: ctrlp {{{
    let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+	\ 'dir':  '\.git$\|\.hg$\|\.svn$|\.bin$',
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
 	\ } 
   " }}}
@@ -182,6 +188,12 @@
 
 
 " Plugins settings {{{
+  " Plugin: ctrl-p
+  let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v(\f[\/](bin|ServiceSchemas|STL2_Models|TypeLibrary|target))|(\.(git|hg|svn))$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ }
+
   " Plugin: supertab
   "if exists("g:SuperTabLongestEnhanced")
     let g:SuperTabLongestEnhanced = 1
@@ -239,7 +251,7 @@ if has("autocmd")
     " Customisations based on house-style (arbitrary)
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType md setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType mkd setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType snippet setlocal ts=2 sts=2 sw=2 noexpandtab
 
