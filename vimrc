@@ -21,6 +21,7 @@
   Bundle 'airblade/vim-gitgutter'
   Bundle 'tpope/vim-fugitive'
   Bundle 'plasticboy/vim-markdown'
+  Bundle 'bling/vim-airline'
         
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
@@ -51,7 +52,7 @@
   set noswapfile
 
   "to open files only in unix format, for windows display ^M for endlines
-  set fileformats=unix,dos
+  set fileformats=unix
 
   set encoding=utf-8
 
@@ -290,7 +291,10 @@ endif
 "}
 " StatusLine {
   set laststatus=2                          "to be sure status linse is visible
-  set statusline=%f\ %m\ %r\ %=\ [%{&fileencoding}]\ [%{&ff}]\ [ft=%{&ft}]\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
+  " Plugin: airline
+  " show buffers status 
+  let g:airline#extensions#tabline#enabled = 1
+  "set statusline=%f\ %m\ %r\ %=\ [%{&fileencoding}]\ [%{&ff}]\ [ft=%{&ft}]\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
   " set statusline=%-9F%m%r%h%w\ [F=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
   "  set statusline=
   "  set statusline+=%<\                       " cut at start
