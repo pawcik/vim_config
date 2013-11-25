@@ -294,6 +294,7 @@ endif
   " Plugin: airline
   " show buffers status 
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_nr_show = 1
   "set statusline=%f\ %m\ %r\ %=\ [%{&fileencoding}]\ [%{&ff}]\ [ft=%{&ft}]\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][1x%B]
   " set statusline=%-9F%m%r%h%w\ [F=%{&ff}]\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\%=[POS=%04l,%04v][%p%%]\ [LEN=%L]
   "  set statusline=
