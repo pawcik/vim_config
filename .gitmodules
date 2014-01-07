@@ -1,36 +1,3 @@
-[submodule "bundle/unimpaired"]
-	path = bundle/unimpaired
-	url = http://github.com/tpope/vim-unimpaired.git
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = http://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/supertab"]
-	path = bundle/supertab
-	url = http://github.com/ervandew/supertab.git
-[submodule "bundle/surround"]
-	path = bundle/surround
-	url = http://github.com/tpope/vim-surround.git
-[submodule "bundle/vim_mac_classic_theme"]
-	path = bundle/vim_mac_classic_theme
-	url = http://github.com/nelstrom/vim-mac-classic-theme.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = http://github.com/scrooloose/nerdtree.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = http://github.com/wincent/Command-T.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = http://github.com/msanders/snipmate.vim.git
-[submodule "bundle/plantuml-syntax"]
-	path = bundle/plantuml-syntax
-	url = http://github.com/ukstv/plantuml-syntax.vim.git
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-	url = http://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-reload"]
-	path = bundle/vim-reload
-	url = http://github.com/vim-scripts/reload.vim.git
 [submodule "bundle/vundle"]
 	path = bundle/vundle
 	url = https://github.com/gmarik/vundle.git
