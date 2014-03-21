@@ -22,6 +22,12 @@
   Bundle 'tpope/vim-fugitive'
   Bundle 'plasticboy/vim-markdown'
   Bundle 'bling/vim-airline'
+  Bundle 'takac/vim-fontmanager'
+  Bundle 'tpope/vim-jdaddy'
+  "select the closest text objects
+  Bundle 'gcmt/wildfire.vim'
+  "base16 colorscheme
+  Bundle 'chriskempson/base16-vim'
         
   filetype plugin indent on       " enable detection, plugins and indenting in one step
 
@@ -60,7 +66,7 @@
   "set background=dark
   "color solarized
   "highlight current line
-  set cursorline
+  "set cursorline
 
   "tab: u25b8 ▸, eol: u00ac ¬, nbsp: u00B7 ·
   set listchars=tab:▸\ ,eol:¬,nbsp:·,trail:·
@@ -123,13 +129,9 @@
   map <C-k> <C-w>k
   map <C-l> <C-w>l
 
+  " to close html tag
+  iabbrev <// </<C-X><C-O>
 
-  " Plugin: ctrlp {{{
-   let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|\.hg$\|\.svn$|\.bin$',
-	\ 'file': '\.exe$\|\.so$\|\.dll$',
-	\ } 
-  " }}}
   "
 " Plugin: unimpaired
   if exists("g:loaded_unimpaired") || &cp || v:version < 700
@@ -171,8 +173,8 @@
 
 
   " using to insert cs from cr
-  nmap <leader>c :r !powertool -g <C-R><C-W><CR>
-  nmap <leader>cx :r !powertool -x -g x<CR>
+  "nmap <leader>c :r !powertool -g <C-R><C-W><CR>
+  "nmap <leader>cx :r !powertool -x -g x<CR>
 
   " toggleRainbow
   nmap <leader>R :RainbowParenthsisToggle<CR>
@@ -191,9 +193,10 @@
 " Plugins settings {{{
   " Plugin: ctrl-p
   let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\f[\/](bin|ServiceSchemas|STL2_Models|TypeLibrary|target))|(\.(git|hg|svn))$',
+    \ 'dir': '\v(\f[\/](bin|target))$|(\.(git|hg|svn))$|(node_modules)$',
     \ 'file': '\v\.(exe|so|dll)$',
     \ }
+  " }}}
 
   " Plugin: supertab
   "if exists("g:SuperTabLongestEnhanced")
